@@ -10,6 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name="entidade")
@@ -19,27 +22,35 @@ public class Entidade {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long codigo;
 	
+	@NotBlank
 	@Column(length = 60)
 	private String nome;
 	
+	@NotBlank
 	@Column(length = 20, name="cpf_ou_cnpj")
 	private String cpfOuCnpj;
 	
+	@NotBlank
 	@Column(length = 80)
 	private String endereco;
 	
+	@NotBlank
 	@Column(length = 60)
 	private String cidade;
 	
+	@NotBlank
 	@Column(length = 60)
 	private String bairro;
 	
+	@NotBlank
 	@Column(length = 20)
 	private String estado;
 	
+	@NotBlank
 	@Column(length = 20)
 	private String telefone;
 	
+	@NotBlank
 	@Column(length = 100, name="e_mail")
 	private String email;
 	
@@ -107,6 +118,13 @@ public class Entidade {
 	public void setTitulos(List<Titulo> titulos) {
 		this.titulos = titulos;
 	}
+	@Override
+	public String toString() {
+		return "Entidade [codigo=" + codigo + ", nome=" + nome + ", cpfOuCnpj=" + cpfOuCnpj + ", endereco=" + endereco
+				+ ", cidade=" + cidade + ", bairro=" + bairro + ", estado=" + estado + ", telefone=" + telefone
+				+ ", email=" + email + "]";
+	}
+	
 	
 	
 	
